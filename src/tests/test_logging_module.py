@@ -29,6 +29,8 @@ def test_get_logger(input_logger: str,
     Returns:
     """
 
+    print(get_logger.__doc__)
+
     # Retrieve the logger
     logger = get_logger(input_logger, input_config_path)
 
