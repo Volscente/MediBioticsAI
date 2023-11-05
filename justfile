@@ -1,8 +1,8 @@
 #!/usr/bin/env just --justfile
 
-# Test Justfile
-hello:
-  echo "hello world"
+# List available commands
+help:
+    @just --justfile {{justfile()}} --list --unsorted
 
 # PyLint
 lint:
