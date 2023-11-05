@@ -21,6 +21,8 @@ Afterwards, you can execute existing commands located in the `justfile`.
 
 ## Poetry
 
+> Python packaging and dependency management made easy
+
 ### Installation
 
 [Reference Documentation](https://python-poetry.org/)
@@ -34,11 +36,6 @@ For **MacOS** with ZSH add the `.local/bin` to the `PATH` environment variable. 
 
 ``` bash
 export PATH="$HOME/.local/bin:$PATH"
-```
-
-### Init Repository
-```bash
-poetry init
 ```
 
 ### Add Dependency
