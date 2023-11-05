@@ -8,7 +8,22 @@ Add the current directory to the `PYTHONPATH` environment variables.
 export PYTHONPATH="$PYTHONPATH:/<absolute_path>/caelvid"
 ```
 
+## Justfile
+> `just` is a handy way to save and run project-specific commands
+> 
+> The main benefit it to keep all configuration and scripts in one place.
+> 
+> It uses the `.env` file for ingesting variables.
+
+You can install it by following the [Documentation](https://just.systems/man/en/chapter_4.html).
+Afterwards, you can execute existing commands located in the `justfile`.
+
+Type `just` to list all available commands.
+
+
 ## Poetry
+
+> Python packaging and dependency management made easy
 
 ### Installation
 
@@ -23,11 +38,6 @@ For **MacOS** with ZSH add the `.local/bin` to the `PATH` environment variable. 
 
 ``` bash
 export PATH="$HOME/.local/bin:$PATH"
-```
-
-### Init Repository
-```bash
-poetry init
 ```
 
 ### Add Dependency
