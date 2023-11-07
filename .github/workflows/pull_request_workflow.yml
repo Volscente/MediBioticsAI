@@ -1,3 +1,4 @@
+# Workflow triggered on PRs that runs PyLint and PyTest
 name: Pull Request Workflow
 run-name: ${{ github.actor }} Pull Request Workflow 🚀
 on:
