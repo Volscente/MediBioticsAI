@@ -14,6 +14,10 @@ lint:
   --msg-template='Rule: {msg_id} - Position: [{line},{column}] -  {msg}' \
   ./src
 
+# Setup Elasticsearch
+setup_elasticsearch:
+  bash scripts/setup_elasticsearch.sh
+
 # Test .env file
 test_env_file:
   echo $TEST_ENV_VAR
