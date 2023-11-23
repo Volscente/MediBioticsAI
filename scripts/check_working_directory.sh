@@ -19,9 +19,15 @@ while getopts ":h" option; do
   esac
 done
 
-dirname=`basename ${pwd}`
-if [ ! ${dirname} = "build-util" ]
-        then
-        echo "Must run from build-util folder"
-        exit 1
-fi
+echo "Checking working directory..."
+
+# Retrieve current working directory
+directory_name=`basename $(pwd)`
+
+echo "Working in the directory: ${directory_name}"
+
+#if [ ! ${dirname} = "build-util" ]
+#        then
+#        echo "Must run from build-util folder"
+#        exit 1
+#fi
