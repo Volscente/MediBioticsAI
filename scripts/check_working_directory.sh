@@ -3,7 +3,10 @@
 
 # Help Function
 show_help() {
+  echo "Verify whenever you are working from the corrected passed path"
+  echo ""
   echo "Usage: $0 [options]"
+  echo ""
   echo "Options:"
   echo "  -h, --help         Display this help message."
   echo "  -p, --path PATH    Specify the path for the script. (Required)"
