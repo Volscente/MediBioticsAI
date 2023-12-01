@@ -1,5 +1,5 @@
 #!/bin/sh
-# Verify whenever you are working from the corrected passed directory
+# Verify whenever you are working from the corrected passed path
 
 # Help Function
 show_help() {
@@ -12,15 +12,15 @@ show_help() {
 # Parse command-line options
 while [ $# -gt 0 ]; do
   case "$1" in
-    -h|--help)
+    -h|--help) # Help
       show_help
       exit 0
       ;;
-    -p|--path)
+    -p|--path) # Provide Path
       shift
       path="$1"
       ;;
-    *)
+    *) # Unknown option
       echo "Unknown option: $1."
       show_help
       exit 1
@@ -31,6 +31,7 @@ done
 
 echo "Checking the provided path..."
 
+# Check if path option is provided
 if [ -z "$path" ]; then
   echo "Error: Please provide a path using the -p or --path option."
   show_help
@@ -44,6 +45,7 @@ directory_name=$(basename "$(pwd)")
 
 echo "Working in the directory: ${directory_name}."
 
+# Check if the current working directory is equal to path option
 if [ ! "$directory_name" = "$path" ]; then
   echo "Error: Must run from '$path' folder."
   exit 1
