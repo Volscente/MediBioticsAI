@@ -29,7 +29,7 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-echo "Checking the provided path."
+echo "Checking the provided path..."
 
 if [ -z "$path" ]; then
   echo "Error: Please provide a path using the -p or --path option."
