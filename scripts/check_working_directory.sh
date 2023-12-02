@@ -4,9 +4,9 @@
 # Help Function
 show_help() {
   echo "Verify whenever you are working from the corrected passed path"
-  echo ""
+  echo
   echo "Usage: $0 [options]"
-  echo ""
+  echo
   echo "Options:"
   echo "  -h, --help         Display this help message."
   echo "  -p, --path PATH    Specify the path for the script. (Required)"
@@ -51,8 +51,10 @@ echo "Working in the directory: ${directory_name}."
 # Check if the current working directory is equal to path option
 if [ ! "$directory_name" = "$path" ]; then
   echo "Error: Must run from '$path' folder."
+  echo
   exit 1
 else
   echo "The working directory is correct."
+  echo
   exit 0
 fi

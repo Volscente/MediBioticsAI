@@ -10,6 +10,7 @@ show_help() {
   echo "Options:"
   echo "  -h, --help         Display this help message."
 }
+
 # Parse command-line options
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -27,6 +28,14 @@ while [ $# -gt 0 ]; do
 done
 
 # Verify that the script runs from the correct folder
-# TODO: verify to run the script from the correct folder (https://learn.openwaterfoundation.org/owf-learn-linux-shell/best-practices/best-practices/)
-# TODO: Fix
 ./scripts/check_working_directory.sh --path "$ROOT_DIRECTORY"
+
+# Check if Docker is installed
+if command -v docker > /dev/null 2>&1 ; then
+    echo "Docker is installed. Version:"
+    docker --version
+    echo
+else
+    echo "Docker is not installed. Please install Docker before running this script."
+    echo
+fi
