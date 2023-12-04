@@ -62,12 +62,9 @@ else
   echo "Docker network '$ES_DOCKER_NETWORK' created."
 fi
 
-# Check if the Docker image has been already pulled
-if docker image inspect "$ES_DOCKER_IMAGE" > /dev/null 2>&1; then
-  echo "Elasticsearch Docker image '$ES_DOCKER_IMAGE' already pulled."
-else
-  # Pull the Elasticsearch Docker image
-  echo "Pulling Elasticsearch Docker image '$ES_DOCKER_IMAGE'"
-  docker pull docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
-  echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
-fi
+# Pull the Elasticsearch Docker image
+echo "Pulling Elasticsearch Docker image '$ES_DOCKER_IMAGE'"
+docker pull docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
+echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
+
+# Run the Elasticsearch Docker image
