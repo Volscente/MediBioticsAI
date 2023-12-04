@@ -1,5 +1,6 @@
 #!/bin/sh
 # Setup an Elasticsearch instance through a Docker container
+# Reference guide: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 
 # Help Function
 show_help() {
@@ -31,11 +32,42 @@ done
 ./scripts/check_working_directory.sh --path "$ROOT_DIRECTORY"
 
 # Check if Docker is installed
-if command -v docker > /dev/null 2>&1 ; then
-    echo "Docker is installed. Version:"
-    docker --version
-    echo
+if docker -v > /dev/null 2>&1 ; then
+  echo "Docker is installed. Version:"
+  docker --version
+  echo
 else
-    echo "Docker is not installed. Please install Docker before running this script."
-    echo
+  echo "Docker is not installed. Please install Docker before running this script."
+  echo
+  exit 1
+fi
+
+# Check if Docker is running
+if docker info > /dev/null 2>&1; then
+  echo "Docker is running correctly."
+  echo
+else
+  echo "Docker is not running. Please run Docker before running this script."
+  echo
+  exit 1
+fi
+
+# Check if the Docker network exists
+if docker network inspect "$ES_DOCKER_NETWORK" > /dev/null 2>&1; then
+  echo "Docker network '$ES_DOCKER_NETWORK' already exists."
+else
+  # Create the Docker network
+  echo "Creating Docker network '$ES_DOCKER_NETWORK'"
+  docker network create "$ES_DOCKER_NETWORK"
+  echo "Docker network '$ES_DOCKER_NETWORK' created."
+fi
+
+# Check if the Docker image has been already pulled
+if docker image inspect "$ES_DOCKER_IMAGE" > /dev/null 2>&1; then
+  echo "Elasticsearch Docker image '$ES_DOCKER_IMAGE' already pulled."
+else
+  # Pull the Elasticsearch Docker image
+  echo "Pulling Elasticsearch Docker image '$ES_DOCKER_IMAGE'"
+  docker pull docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
+  echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
 fi
