@@ -67,7 +67,9 @@ echo "Pulling Elasticsearch Docker image '$ES_DOCKER_IMAGE'"
 docker pull docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
 echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
 
-# Run the Elasticsearch Docker image
+# Run the Elasticsearch Docker
+echo " Starting Elasticsearch."
+echo
 docker run --name es_container --net elastic_network -p 9200:9200 -it -m 1GB \
   -e "discovery.type=single-node" \
   -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
