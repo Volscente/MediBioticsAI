@@ -68,3 +68,9 @@ docker pull docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
 echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
 
 # Run the Elasticsearch Docker image
+docker run --name es_container --net elastic_network -p 9200:9200 -it -m 1GB \
+  -e "discovery.type=single-node" \
+  -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
+  --ulimit memlock=-1:-1 \
+  --ulimit nofile=65536:65536 \
+  docker.elastic.co/elasticsearch/elasticsearch:8.11.1
