@@ -95,27 +95,29 @@ case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
     echo "Docker container is not running."
     ;;
   *)
+    # Create Docker container
     echo "Docker container is not created."
+    echo "Starting Elasticsearch."
+    echo
+    docker container run --name "$ES_DOCKER_CONTAINER" --net "$ES_DOCKER_NETWORK" -p 9200:9200 -it -m 1GB \
+      -e "discovery.type=single-node" \
+      -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
+      --ulimit memlock=-1:-1 \
+      --ulimit nofile=65536:65536 \
+      -d \
+      docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
+    echo
+    # TODO: Wait until ES is started
+    echo "Elasticsearch Started."
+    echo
     ;;
 esac
 
-# Run the Elasticsearch Docker
 # TODO: Retrieve the elastic password
-#echo "Starting Elasticsearch."
-#echo
-#docker container run --name "$ES_DOCKER_CONTAINER" --net "$ES_DOCKER_NETWORK" -p 9200:9200 -it -m 1GB \
-#  -e "discovery.type=single-node" \
-#  -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
-#  --ulimit memlock=-1:-1 \
-#  --ulimit nofile=65536:65536 \
-#  docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
-#echo
-#echo "Elasticsearch Started."
-#echo
 
 # TODO: Check if the container is now running, otherwise exit
 
 # Extract the elastic user password
 # TODO: Check if the container is now running, otherwise exit
-# TODO docker logs es_container | grep -A 1 Password | tail -n 1
+docker logs "$ES_DOCKER_CONTAINER" | grep -A 1 Password | tail -n 1
 #echo
