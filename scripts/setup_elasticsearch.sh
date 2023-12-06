@@ -55,24 +55,41 @@ fi
 # Check if the Docker network exists
 if docker network inspect "$ES_DOCKER_NETWORK" > /dev/null 2>&1; then
   echo "Docker network '$ES_DOCKER_NETWORK' already exists."
+  echo
 else
   # Create the Docker network
   echo "Creating Docker network '$ES_DOCKER_NETWORK'"
   docker network create "$ES_DOCKER_NETWORK"
   echo "Docker network '$ES_DOCKER_NETWORK' created."
+  echo
 fi
 
 # Pull the Elasticsearch Docker image
 echo "Pulling Elasticsearch Docker image '$ES_DOCKER_IMAGE'"
 docker pull docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
 echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
+echo
+
+# Check if a container already exists
+# TODO: Check if the container already exists and in case restart it
+#if docker network inspect "$ES_DOCKER_NETWORK" > /dev/null 2>&1; then
+#  echo "Docker network '$ES_DOCKER_NETWORK' already exists."
+#else
+#  # Create the Docker network
+#  echo "Creating Docker network '$ES_DOCKER_NETWORK'"
+#  docker network create "$ES_DOCKER_NETWORK"
+#  echo "Docker network '$ES_DOCKER_NETWORK' created."
+#fi
 
 # Run the Elasticsearch Docker
-echo " Starting Elasticsearch."
+# TODO: Retrieve the elastic password
+echo "Starting Elasticsearch."
 echo
-docker run --name es_container --net elastic_network -p 9200:9200 -it -m 1GB \
+docker container run --name es_container --net elastic_network -p 9200:9200 -it -m 1GB \
   -e "discovery.type=single-node" \
   -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
   --ulimit memlock=-1:-1 \
   --ulimit nofile=65536:65536 \
+  -d \
   docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+echo "Elasticsearch Started."
