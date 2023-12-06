@@ -92,6 +92,7 @@ case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
     ;;
   false)
     # Docker container is NOT running
+    # TODO
     echo "Docker container is not running."
     ;;
   *)
@@ -107,7 +108,12 @@ case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
       -d \
       docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
     echo
+    # Wait for the specific output in the logs
     # TODO: Wait until ES is started
+    while ! docker logs "$ES_DOCKER_CONTAINER" 2>&1 | grep -q "Password"; do
+        echo "Elasticsearch is starting..."
+        sleep 1
+    done
     echo "Elasticsearch Started."
     echo
     ;;
