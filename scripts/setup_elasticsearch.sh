@@ -110,6 +110,7 @@ case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
     echo
     # Wait for the specific output in the logs
     # TODO: Wait until ES is started
+    # NOTE: When launched in background, no password is generated
     while ! docker logs "$ES_DOCKER_CONTAINER" 2>&1 | grep -q "Password"; do
         echo "Elasticsearch is starting..."
         sleep 1
