@@ -66,7 +66,9 @@ fi
 
 # Pull the Elasticsearch Docker image
 echo "Pulling Elasticsearch Docker image '$ES_DOCKER_IMAGE'"
+echo
 docker pull docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
+echo
 echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
 echo
 
@@ -85,9 +87,11 @@ echo
 # Check if the container already exists and it is running
 case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
   true)
+    # Docker container is running
     echo "Docker container is already running."
     ;;
   false)
+    # Docker container is NOT running
     echo "Docker container is not running."
     ;;
   *)
