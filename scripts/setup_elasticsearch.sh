@@ -72,20 +72,8 @@ echo
 echo "Elasticsearch Docker image '$ES_DOCKER_NETWORK' pulled."
 echo
 
-# Check if a container already exists
-# TODO: Check if the container already exists AND runningand in case restart it
-#if docker container inspect "ES_DOCKER_CONTAINER" > /dev/null 2>&1; then
-#  if docker container
-#  echo "Docker network '$ES_DOCKER_NETWORK' already exists."
-#else
-#  # Create the Docker network
-#  echo "Creating Docker network '$ES_DOCKER_NETWORK'"
-#  docker network create "$ES_DOCKER_NETWORK"
-#  echo "Docker network '$ES_DOCKER_NETWORK' created."
-#fi
-
 # Check if the container already exists and it is running
-case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
+case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
   true)
     # Docker container is running
     echo "Docker container is already running."
@@ -97,6 +85,7 @@ case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
     ;;
   *)
     # Create Docker container
+    #TODO
     echo "Docker container is not created."
     echo "Starting Elasticsearch."
     echo
@@ -111,10 +100,10 @@ case $(docker inspect -f '{{.State.Running}}' elasticsearch_container) in
     # Wait for the specific output in the logs
     # TODO: Wait until ES is started
     # NOTE: When launched in background, no password is generated
-    while ! docker logs "$ES_DOCKER_CONTAINER" 2>&1 | grep -q "Password"; do
-        echo "Elasticsearch is starting..."
-        sleep 1
-    done
+#    while ! docker logs "$ES_DOCKER_CONTAINER" 2>&1 | grep -q "Password"; do
+#        echo "Elasticsearch is starting..."
+#        sleep 1
+#    done
     echo "Elasticsearch Started."
     echo
     ;;
@@ -126,5 +115,5 @@ esac
 
 # Extract the elastic user password
 # TODO: Check if the container is now running, otherwise exit
-docker logs "$ES_DOCKER_CONTAINER" | grep -A 1 Password | tail -n 1
+#docker logs "$ES_DOCKER_CONTAINER" | grep -A 1 Password | tail -n 1
 #echo
