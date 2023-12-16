@@ -105,10 +105,7 @@ esac
 echo "Elasticsearch Started."
 
 # TODO: Retrieve the elastic password
-
-# TODO: Check if the container is now running, otherwise exit
-
-# Extract the elastic user password
-# TODO: Check if the container is now running, otherwise exit
-#docker logs "$ES_DOCKER_CONTAINER" | grep -A 1 Password | tail -n 1
-#echo
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html
+# Set the password as an environment variable
+# Then read it
+# TODO Ask at the start of the script for such a password!
