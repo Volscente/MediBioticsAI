@@ -77,19 +77,20 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
   true)
     # Docker container is running
     echo "Docker container is already running."
+    echo
     ;;
   false)
     # Docker container is NOT running
-    # TODO
     echo "Docker container is not running."
     echo "Restarting Docker container."
     docker container start "$ES_DOCKER_CONTAINER"
+    echo
     ;;
   *)
     # Create Docker container
     #TODO
     echo "Docker container is not created."
-    echo "Starting Elasticsearch."
+    echo "Starting Docker container."
     echo
     docker container run --name "$ES_DOCKER_CONTAINER" --net "$ES_DOCKER_NETWORK" -p 9200:9200 -it -m 1GB \
       -e "discovery.type=single-node" \
@@ -98,18 +99,10 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
       --ulimit nofile=65536:65536 \
       -d \
       docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
-    echo
-    # Wait for the specific output in the logs
-    # TODO: Wait until ES is started
-    # NOTE: When launched in background, no password is generated
-#    while ! docker logs "$ES_DOCKER_CONTAINER" 2>&1 | grep -q "Password"; do
-#        echo "Elasticsearch is starting..."
-#        sleep 1
-#    done
-    echo "Elasticsearch Started."
-    echo
     ;;
 esac
+
+echo "Elasticsearch Started."
 
 # TODO: Retrieve the elastic password
 
