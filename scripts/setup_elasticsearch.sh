@@ -82,6 +82,8 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
     # Docker container is NOT running
     # TODO
     echo "Docker container is not running."
+    echo "Restarting Docker container."
+    docker container start "$ES_DOCKER_CONTAINER"
     ;;
   *)
     # Create Docker container
