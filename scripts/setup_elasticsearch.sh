@@ -85,6 +85,13 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
     echo "Restarting Docker container."
     docker container start "$ES_DOCKER_CONTAINER"
     echo
+    # Wait few seconds to let Elasticsearch start
+    i=0
+    while [ $i -lt 10 ]; do
+        echo "Starting Elasticsearch..."
+        i=$((i + 2))
+        sleep 2
+    done
     ;;
   *)
     # Create Docker container
@@ -99,6 +106,14 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
       --ulimit nofile=65536:65536 \
       -d \
       docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
+    echo
+    # Wait few seconds to let Elasticsearch start
+    i=0
+    while [ $i -lt 120 ]; do
+        echo "Starting Elasticsearch..."
+        i=$((i + 2))
+        sleep 2
+    done
     ;;
 esac
 
@@ -109,3 +124,4 @@ echo "Elasticsearch Started."
 # Set the password as an environment variable
 # Then read it
 # TODO Ask at the start of the script for such a password!
+docker container exec elasticsearch_container ./bin/elasticsearch-setup-passwords auto --batch
