@@ -85,18 +85,17 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
     echo "Restarting Docker container."
     docker container start "$ES_DOCKER_CONTAINER"
     echo
+
     # Wait few seconds to let Elasticsearch start
     i=0
-    while [ $i -lt 10 ]; do
+    while [ $i -lt 120 ]; do
         echo "Starting Elasticsearch..."
         i=$((i + 2))
         sleep 2
     done
     ;;
   *)
-    # Create Docker container
-    #TODO
-    echo "Docker container is not created."
+    # Create Docker container    echo "Docker container is not created."
     echo "Starting Docker container."
     echo
     docker container run --name "$ES_DOCKER_CONTAINER" --net "$ES_DOCKER_NETWORK" -p 9200:9200 -it -m 1GB \
@@ -107,6 +106,7 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
       -d \
       docker.elastic.co/elasticsearch/"$ES_DOCKER_IMAGE"
     echo
+
     # Wait few seconds to let Elasticsearch start
     i=0
     while [ $i -lt 120 ]; do
@@ -118,10 +118,3 @@ case $(docker inspect -f '{{.State.Running}}' "$ES_DOCKER_CONTAINER") in
 esac
 
 echo "Elasticsearch Started."
-
-# TODO: Retrieve the elastic password
-# https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html
-# Set the password as an environment variable
-# Then read it
-# TODO Ask at the start of the script for such a password!
-docker container exec elasticsearch_container ./bin/elasticsearch-setup-passwords auto --batch
