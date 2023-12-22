@@ -18,6 +18,10 @@ lint:
 setup_elasticsearch:
   bash scripts/setup_elasticsearch.sh
 
+# Create an Elasticsearch user in interactive mode
+create_elasticsearch_user:
+  bash scripts/create_elasticsearch_user.sh
+
 # Test .env file
 test_env_file:
   echo $TEST_ENV_VAR
