@@ -5,9 +5,9 @@
 # Help Function
 show_help() {
   echo "Setup an Elasticsearch instance through a Docker container"
-  echo ""
+  echo
   echo "Usage: $0 [options]"
-  echo ""
+  echo
   echo "Options:"
   echo "  -h, --help         Display this help message."
 }
