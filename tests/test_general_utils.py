@@ -6,7 +6,7 @@ module src.general.general_utils
 import pytest
 
 # Import Package Modules
-from src.general_utils.general_utils import read_configuration
+from general_utils.general_utils import read_configuration
 
 
 @pytest.mark.parametrize('test_config_file, test_config, expected_value', [
