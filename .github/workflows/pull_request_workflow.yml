@@ -29,7 +29,7 @@ jobs:
           run: poetry install --no-interaction --no-ansi
         - name: Lint with PyLint
           run: |
-            poetry run pylint --output-format=colorized --msg-template='Rule: {msg_id} - Position: [{line},{column}] -  {msg}' ./src
+            poetry run pylint --output-format=colorized --msg-template='Rule: {msg_id} - Position: [{line},{column}] -  {msg}' ./
         - name: Run Unit Tests with PyTest
           run: |
             poetry run pytest
