@@ -12,7 +12,7 @@ lint:
   poetry run pylint --load-plugins pylint_pytest \
   --output-format=colorized \
   --msg-template='Rule: {msg_id} - Position: [{line},{column}] -  {msg}' \
-  ./src
+  ./src ./tests
 
 # Setup Elasticsearch
 setup_elasticsearch:
