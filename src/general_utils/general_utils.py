@@ -8,11 +8,11 @@ import yaml
 
 
 # Import Package Modules
-from src.logging_module.logging_module import get_logger
+from logging_module.logging_module import get_logger
 
 # Setup logger
 logger = get_logger(os.path.basename(__file__).split('.')[0],
-                    Path(__file__).parents[2] / 'configuration' / 'log_configuration.yaml')
+                    Path(__file__).parents[1] / 'logging_module' / 'log_configuration.yaml')
 
 
 def read_configuration(file_name: str) -> dict:

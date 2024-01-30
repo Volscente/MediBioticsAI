@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "medibioticsai"
-version = "0.1.4"
+version = "0.1.5"
 description = "MediBioticsAI is a cutting-edge initiative at the forefront of the healthcare revolution, harnessing the power of AI&ML to address some of the most pressing challenges in the field of health and medicine."
 authors = ["Simone Porreca <porrecasimone@gmail.com>"]
 license = "GPL-3.0"
@@ -22,3 +22,8 @@ jupyterlab = "^4.0.5"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]

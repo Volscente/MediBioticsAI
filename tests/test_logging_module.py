@@ -7,12 +7,12 @@ import pathlib
 import pytest
 
 # Import Package Modules
-from src.logging_module.logging_module import get_logger
+from logging_module.logging_module import get_logger
 
 
 @pytest.mark.parametrize('input_logger, input_config_path, expected_name', [
     ('general_utils',
-     pathlib.Path(__file__).parents[2] / 'configuration' / 'log_configuration.yaml',
+     pathlib.Path(__file__).parents[1] / 'src' / 'logging_module' / 'log_configuration.yaml',
      'general_utils'),
 ])
 def test_get_logger(input_logger: str,
@@ -37,7 +37,7 @@ def test_get_logger(input_logger: str,
 
 @pytest.mark.parametrize('input_logger, input_config_path, expected_exception', [
     ('general_utils',
-     pathlib.Path(__file__).parents[2] / 'configuration' / 'wrong_log_configuration.yaml',
+     pathlib.Path(__file__).parents[1] / 'src' / 'logging_module' / 'wrong_log_configuration.yaml',
      FileNotFoundError),
 ])
 def test_get_logger_exceptions(input_logger: str,
