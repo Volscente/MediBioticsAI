@@ -14,6 +14,12 @@ lint:
   --msg-template='Rule: {msg_id} - Position: [{line},{column}] -  {msg}' \
   ./src ./tests
 
+# SQLFluff
+lint_sql file="./queries":
+  # Fix and lint
+  poetry run sqlfluff fix --dialect bigquery --exclude-rules LT05 {{file}}
+  poetry run sqlfluff lint --dialect bigquery --exclude-rules LT05 {{file}}
+
 # Setup Elasticsearch
 setup_elasticsearch:
   bash scripts/setup_elasticsearch.sh

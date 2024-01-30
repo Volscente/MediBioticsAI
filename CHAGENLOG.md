@@ -1,6 +1,7 @@
 v0.1.4
 ------
-- [x] Create the `pull_request_workflow`
+- [x] Create the `pull_request_workflow.yml`
+- [x] Add `just lint_sql` command 
 
 v.0.1.3
 ------
