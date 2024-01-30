@@ -1,7 +1,11 @@
+v0.1.5
+------
+- [x] Add `just lint_sql` command 
+- [x] Refactor the PyLint commands in `justfile` and `pull_request_workflow.yml`
+
 v0.1.4
 ------
 - [x] Create the `pull_request_workflow.yml`
-- [x] Add `just lint_sql` command 
 
 v.0.1.3
 ------
