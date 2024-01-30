@@ -5,7 +5,7 @@ MediBioticsAI is a cutting-edge initiative at the forefront of the healthcare re
 ## Update PYTHONPATH
 Add the current directory to the `PYTHONPATH` environment variables.
 ``` bash
-export PYTHONPATH="$PYTHONPATH:/<absolute_path>/caelvid"
+export PYTHONPATH="$PYTHONPATH:/<absolute_path>/MediBioticsAI"
 ```
 
 ## Justfile
