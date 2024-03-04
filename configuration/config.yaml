@@ -1,2 +1,8 @@
 # Test Configuration
 test_value: 1
+
+# Healthcare Classification
+healthcare_dataset_path:
+  - 'data'
+  - 'raw'
+  - 'healthcare_dataset.csv'
