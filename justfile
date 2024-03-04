@@ -32,3 +32,7 @@ create_elasticsearch_user:
 # Test .env file
 test_env_file:
   echo $TEST_ENV_VAR
+
+# Start Jupyter Lab with the Poetry Virtual Environment
+jupy:
+  poetry run jupyter lab
