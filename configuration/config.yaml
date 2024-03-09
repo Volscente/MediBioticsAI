@@ -1,8 +1,11 @@
 # Test Configuration
 test_value: 1
 
-# Healthcare Classification
+# Healthcare Dataset
 healthcare_dataset_path:
   - 'data'
   - 'raw'
   - 'healthcare_dataset.csv'
+healthcare_dataset_dates:
+  - 'Date of Admission'
+  - 'Discharge Date'
