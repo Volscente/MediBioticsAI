@@ -7,7 +7,7 @@ import pathlib
 import pytest
 
 # Import Package Modules
-from logging_module.logging_module import get_logger
+from src.logging_module.logging_module import get_logger
 
 
 @pytest.mark.parametrize('input_logger, input_config_path, expected_name', [
