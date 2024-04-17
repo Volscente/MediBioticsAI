@@ -10,7 +10,7 @@ from src.general_utils.general_utils import read_configuration
 
 
 @pytest.mark.parametrize('test_config_file, test_config, expected_value', [
-    ('config.yaml', 'test_value', 1),
+    ('healthcare_classification_config.yaml', 'test_value', 1),
 ])
 def test_read_configuration(test_config_file: str,
                             test_config: str,
