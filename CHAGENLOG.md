@@ -1,3 +1,13 @@
+v1.0.1
+------
+- [x] Add `just jupy` command
+- [x] Add `General EDA plots` in `notebooks/healthcare_classification/healthcare_dataset_eda.ipynb`
+- [x] Add `Numerical Feature Distribution` plot in `notebooks/healthcare_classification/healthcare_dataset_eda.ipynb`
+- [x] Add `Count Unique Values per Categorical Feature` plot in `notebooks/healthcare_classification/healthcare_dataset_eda.ipynb`
+- [x] Add `Count Values per Relevant Categorical Feature` plot in `notebooks/healthcare_classification/healthcare_dataset_eda.ipynb`
+- [x] Add `Label Distribution` plot in `notebooks/healthcare_classification/healthcare_dataset_eda.ipynb`
+- [x] Add EDA conclusions
+
 v0.1.5
 ------
 - [x] Add `just lint_sql` command 
