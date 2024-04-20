@@ -18,3 +18,7 @@ loggers:
     level: INFO
     handlers: [ console ]
     propagate: no
+  data_preparation_utils:
+    level: INFO
+    handlers: [ console ]
+    propagate: no

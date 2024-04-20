@@ -3,6 +3,8 @@ The module contains object classes for the Data Preparation pipelines and compon
 """
 # Import Standard Libraries
 import pathlib
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
 
 # Import Package Modules
 from src.logging_module.logging_module import get_logger
@@ -55,4 +57,15 @@ class HealthcareDataPreparation:
         # Initialise data preparation pipeline steps
         self.numerical_data_pipeline_steps = None
         self.categorical_data_pipeline_steps = None
-        
+
+    # TODO: Implement the function
+    def build_training_data_preparation_pipeline(self) -> ColumnTransformer:
+        """
+        Builds the training data preparation pipeline
+
+        Returns:
+            training_data_preparation_pipeline: sklearn.compose.ColumnTransformer
+                                                with required data preparation steps
+        """
+        pass
+
