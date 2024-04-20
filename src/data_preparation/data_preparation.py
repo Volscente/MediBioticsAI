@@ -40,3 +40,19 @@ class HealthcareDataPreparation:
                                  pathlib.Path(__file__).parents[1] /
                                  'logging_module' /
                                  'log_configuration.yaml')
+
+        self.logger.info('__init__ - Initialise object attributes')
+
+        # Initialise attributes
+        self.data_transformations = data_transformations
+
+        # Check if there are numerical and/or categorical features
+        if 'numerical' in features:
+            self.numerical_features = features['numerical']
+        if 'categorical' in features:
+            self.categorical_features = features['categorical']
+
+        # Initialise data preparation pipeline steps
+        self.numerical_data_pipeline_steps = None
+        self.categorical_data_pipeline_steps = None
+        
