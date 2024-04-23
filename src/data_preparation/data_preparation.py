@@ -99,5 +99,3 @@ class HealthcareDataPreparation:
         self.logger.info('build_training_data_preparation_pipeline - End')
 
         return training_data_preparation_pipeline
-
-

@@ -139,4 +139,3 @@ def build_categorical_data_pipeline_steps(categorical_data_transformations: dict
     logger.info('build_categorical_data_pipeline_steps - End')
 
     return categorical_data_pipeline_steps
-

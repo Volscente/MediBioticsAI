@@ -3,8 +3,8 @@ This test module includes all the tests for the
 module src.general.general_utils
 """
 # Import Standard Modules
-import pytest
 import pathlib
+import pytest
 
 # Import Package Modules
 from src.general_utils.general_utils import read_configuration
