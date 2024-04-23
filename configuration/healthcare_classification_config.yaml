@@ -1,6 +1,3 @@
-# Test Configuration
-test_value: 1
-
 # Healthcare Dataset
 healthcare_dataset_config:
   data_path:

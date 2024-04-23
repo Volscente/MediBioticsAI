@@ -1,3 +1,6 @@
+# Test value
+test_value: 1
+
 # Test numerical data transformations
 test_numerical_data_transformations:
   feature_engineering:
