@@ -8,6 +8,10 @@ from sklearn.pipeline import Pipeline
 
 # Import Package Modules
 from src.logging_module.logging_module import get_logger
+from src.data_preparation.data_preparation_utils import (
+    build_numerical_data_pipeline_steps,
+    build_categorical_data_pipeline_steps
+)
 
 
 class HealthcareDataPreparation:
@@ -58,7 +62,6 @@ class HealthcareDataPreparation:
         self.numerical_data_pipeline_steps = None
         self.categorical_data_pipeline_steps = None
 
-    # TODO: Implement the function
     def build_training_data_preparation_pipeline(self) -> ColumnTransformer:
         """
         Builds the training data preparation pipeline
@@ -67,5 +70,34 @@ class HealthcareDataPreparation:
             training_data_preparation_pipeline: sklearn.compose.ColumnTransformer
                                                 with required data preparation steps
         """
-        pass
+        self.logger.info('build_training_data_preparation_pipeline - Start')
+
+        self.logger.info('build_training_data_preparation_pipeline - Build the Numerical Data Pipeline')
+
+        # Define the numerical data pipeline steps
+        self.numerical_data_pipeline_steps = build_numerical_data_pipeline_steps(
+            self.data_transformations['numerical']
+        )
+
+        self.logger.info('build_training_data_preparation_pipeline - Build the Categorical Data Pipeline')
+
+        # Define the categorical data pipeline steps
+        self.categorical_data_pipeline_steps = build_categorical_data_pipeline_steps(
+            self.data_transformations['categorical']
+        )
+
+        self.logger.info('build_training_data_preparation_pipeline - Bundle the data pipeline')
+
+        # Bundle the data pipeline
+        training_data_preparation_pipeline = ColumnTransformer(
+            transformers=[
+                ('numerical', Pipeline(self.numerical_data_pipeline_steps), self.numerical_features),
+                ('categorical', Pipeline(self.categorical_data_pipeline_steps), self.categorical_features)
+            ]
+        )
+
+        self.logger.info('build_training_data_preparation_pipeline - End')
+
+        return training_data_preparation_pipeline
+
 
