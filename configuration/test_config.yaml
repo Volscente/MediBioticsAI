@@ -12,3 +12,12 @@ test_numerical_data_transformations:
   normalization:
     include: False
     module: None
+
+# Test categorical data transformations
+test_categorical_data_transformations:
+  imputation:
+    include: True
+    module: 'SimpleImputer'
+  one_hot_encoding:
+    include: True
+    module: 'OneHotEncoder'

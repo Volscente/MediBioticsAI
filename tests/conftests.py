@@ -33,3 +33,23 @@ def fixture_numerical_data_transformations(
     """
 
     return test_numerical_data_transformations
+
+
+@pytest.fixture
+def fixture_categorical_data_transformations(
+        test_categorical_data_transformations: dict = configuration['test_categorical_data_transformations']
+) -> dict:
+    """
+    Fixture for a Dictionary Categorical Data Transformations with structure:
+        <transformation_name>:
+            include: <bool>
+            module: <string module name>
+
+    Args:
+        test_categorical_data_transformations: dict of categorical data transformations
+
+    Returns:
+        test_categorical_data_transformations: dict of categorical data transformations
+    """
+
+    return test_categorical_data_transformations
