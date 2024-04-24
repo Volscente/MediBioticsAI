@@ -5,7 +5,7 @@ The module contains utility function for the Data Preparation pipeline
 import os
 import pathlib
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 
 # Import Package Modules
 from src.logging_module.logging_module import get_logger
@@ -63,8 +63,21 @@ def build_numerical_data_pipeline_steps(numerical_data_transformations: dict) ->
         logger.info('build_numerical_data_pipeline_steps - Skipping Imputation step')
 
     # 3. Check standardisation step
-    if numerical_data_transformations['standardization']['include']:
-        pass
+    if numerical_data_transformations['standardisation']['include']:
+
+        # Retrieve standardisation module to use
+        standardisation_module = numerical_data_transformations['standardisation']['module']
+
+        logger.info('build_numerical_data_pipeline_steps - Adding %s Standardisation step',
+                    standardisation_module)
+
+        # Switch the imputation technique to apply
+        match standardisation_module:
+            case 'MinMaxScaler':
+                numerical_data_pipeline_steps.append(
+                    ('standardisation',
+                     MinMaxScaler())
+                )
     else:
         logger.info('build_numerical_data_pipeline_steps - Skipping Standardisation step')
 
