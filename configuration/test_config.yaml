@@ -9,7 +9,7 @@ test_numerical_data_transformations:
   imputation:
     include: True
     module: 'SimpleImputer'
-  standardization:
+  standardisation:
     include: False
     module: None
   normalization:
