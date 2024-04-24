@@ -1,7 +1,4 @@
-# Test Configuration
-test_value: 1
-
-# Healthcare Dataset
+# Exploratory Data Analysis
 healthcare_dataset_config:
   data_path:
     - 'data'
@@ -10,3 +7,52 @@ healthcare_dataset_config:
   date_columns:
   - 'Date of Admission'
   - 'Discharge Date'
+
+# Data Pipeline
+healthcare_data_pipeline_config:
+  dataset:
+    data_path:
+      - 'data'
+      - 'raw'
+      - 'healthcare_dataset.csv'
+    date_columns:
+      - 'Date of Admission'
+      - 'Discharge Date'
+  data_transformations:
+    numerical:
+      feature_engineering:
+        include: False
+        module: None
+      imputation:
+        include: True
+        module: 'SimpleImputer'
+      standardisation:
+        include: True
+        module: 'MinMaxScaler'
+      normalization:
+        include: False
+        module: None
+    categorical:
+      imputation:
+        include: True
+        module: 'SimpleImputer'
+      one_hot_encoding:
+        include: True
+        module: 'OneHotEncoder'
+  features:
+    numerical:
+      - 'Age'
+      - 'Billing Amount'
+      - 'Room Number'
+    categorical:
+      - 'Gender'
+      - 'Blood Type'
+      - 'Medical Condition'
+      - 'Insurance Provider'
+      - 'Admission Type'
+      - 'Medication'
+  labels:
+    - 'Test Results'
+  train_test_split:
+    test_size: 0.33
+    random_state: 108

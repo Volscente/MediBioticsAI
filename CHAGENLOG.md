@@ -1,3 +1,19 @@
+v1.0.2
+------
+- [x] Add `HealthcareDataPreparation` class in `src/data_preparation/data_preparation.py` module
+- [x] Add `data_preparation_utils` in `src/data_preparation/data_preparation.py`
+- [x] Add `build_numerical_data_pipeline_steps` in `src/data_preparation/data_preparation_utils.py`
+- [x] Add `build_categorical_data_pipeline_steps` in `src/data_preparation/data_preparation_utils.py`
+- [x] Add `conftests.py` in `tests`
+- [x] Add PyTest `test_build_numerical_data_pipeline_steps` in `tests`
+- [x] Add PyTest `test_build_categorical_data_pipeline_steps` in `tests`
+- [x] Add Fixture `fixture_numerical_data_transformations`
+- [x] Add Fixture `fixture_categorical_data_transformations`
+- [x] Add script `pylint_lint.sh` in `scripts`
+- [x] Add script `pylint_lint.sh` in `scripts`
+- [x] Add function `build_training_data_preparation_pipeline` in class `HealthcareDataPreparation`
+- [x] Add `model_training.ipynb` in `notebooks/healthcare_classification`
+
 v1.0.1
 ------
 - [x] Add `just jupy` command
