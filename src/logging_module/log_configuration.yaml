@@ -22,3 +22,11 @@ loggers:
     level: INFO
     handlers: [ console ]
     propagate: no
+  ModelTrainer:
+    level: INFO
+    handlers: [ console ]
+    propagate: no
+  model_training_utils:
+    level: INFO
+    handlers: [ console ]
+    propagate: no
