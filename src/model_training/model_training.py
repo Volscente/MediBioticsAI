@@ -51,3 +51,32 @@ class ModelTrainer:
         self.model = model
         self.data_pipeline = data_pipeline
         self.pipeline = None
+
+    def bundle_and_fit_pipeline(self,
+                                x: pd.DataFrame,
+                                y: pd.DataFrame):
+        """
+        Bundles the data pipeline and model into a Pipeline and perform the training
+
+        Args:
+            x: Pandas Dataframe of features values
+            y: Pandas Dataframe of labels values
+
+        Returns:
+        """
+        self.logger.info('bundle_and_fit_pipeline - Start')
+
+        self.logger.info('bundle_and_fit_pipeline - Bundle the pipeline')
+
+        # Bundle the data_pipeline and the model together into a Pipline object
+        self.pipeline = Pipeline([
+            ('data_preprocessing', self.data_pipeline),
+            (self.model_name, self.model)
+        ])
+
+        self.logger.info('bundle_and_fit_pipeline - Fit the pipeline')
+
+        # Train the pipeline
+        self.pipeline.fit(x, y)
+
+        self.logger.info('bundle_and_fit_pipeline - End')
