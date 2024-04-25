@@ -10,6 +10,7 @@ from sklearn.pipeline import Pipeline
 
 # Import Package Modules
 from src.logging_module.logging_module import get_logger
+from src.model_training.model_training_utils import compute_regression_metrics
 
 
 class ModelTrainer:
@@ -80,3 +81,42 @@ class ModelTrainer:
         self.pipeline.fit(x, y)
 
         self.logger.info('bundle_and_fit_pipeline - End')
+
+    def evaluate_pipeline(self,
+                          x: pd.DataFrame,
+                          y: pd.DataFrame,
+                          metrics: list) -> pd.DataFrame:
+        """
+        Bundles the data pipeline and model into a Pipeline and perform the training
+
+        Args:
+            x: Pandas Dataframe of features values
+            y: Pandas Dataframe of labels values
+            metrics: List of metrics to use in the evaluation
+
+        Returns:
+            evaluation: Pandas Dataframe of evaluation metrics results
+        """
+        self.logger.info('evaluate_pipeline - Start')
+
+        self.logger.info('evaluate_pipeline - Compute predictions')
+
+        try:
+
+            # Compute predictions
+            predictions = self.pipeline.predict(x)
+
+        except AttributeError as exc:
+
+            self.logger.error('evaluate_pipeline - Impossible to compute predictions')
+
+            raise AttributeError('evaluate_pipeline - Ensure to run first bundle_and_fit_pipeline') from exc
+
+        self.logger.info('evaluate_pipeline - Evaluate pipeline')
+
+        # Compute evaluation metrics
+        evaluation = compute_regression_metrics(predictions, y, metrics)
+
+        self.logger.info('evaluate_pipeline - End')
+
+        return evaluation
