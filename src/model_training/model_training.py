@@ -4,7 +4,7 @@ The module contains object classes for the Model Training pipelines and componen
 # Import Standard Libraries
 import pathlib
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
@@ -22,21 +22,21 @@ class ModelTrainer:
     Attributes:
         logger: logging.Logger object for log messages
         model_name: String name of the model to be trained
-        model: Regressor model to be fitted and evaluated
+        model: Classification model to be fitted and evaluated
         data_pipeline: ColumnTransformer with required data preparation steps
         pipeline: Scikit-learn Pipeline object that bundles the model and data_pipeline
     """
 
     def __init__(self,
                  model_name: str,
-                 model: LinearRegression,
+                 model: LogisticRegression,
                  data_pipeline: ColumnTransformer):
         """
         The constructor of the ModelTrainer object.
 
         Args:
             model_name: String name of the model to be trained
-            model: Regressor model to be fitted and evaluated
+            model: Classification model to be fitted and evaluated
             data_pipeline: ColumnTransformer with required data preparation steps
         """
         # Setup logger
