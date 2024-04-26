@@ -1,3 +1,5 @@
+![Inspiring Image](https://repository-images.githubusercontent.com/688977957/f3472771-5b6e-4e1c-a335-f1afc712534e)
+
 # MediBioticsAI
 MediBioticsAI is a cutting-edge initiative at the forefront of the healthcare revolution, harnessing the power of AI&ML to address some of the most pressing challenges in the field of health and medicine.
 
