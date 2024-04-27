@@ -24,3 +24,11 @@ test_categorical_data_transformations:
   one_hot_encoding:
     include: True
     module: 'OneHotEncoder'
+
+# Test regression metrics
+test_regression_metrics:
+  - 'RMSE'
+  - 'MSE'
+  - 'MAE'
+  - 'MAPE'
+  - 'R2 Score'

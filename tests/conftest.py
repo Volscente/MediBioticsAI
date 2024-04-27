@@ -53,3 +53,20 @@ def fixture_categorical_data_transformations(
     """
 
     return test_categorical_data_transformations
+
+
+@pytest.fixture
+def fixture_regression_metrics(
+        test_regression_metrics: list = configuration['test_regression_metrics']
+) -> list:
+    """
+    Fixture for regression metrics list
+
+    Args:
+        test_regression_metrics: list of regression metrics
+
+    Returns:
+        test_regression_metrics: list of regression metrics
+    """
+
+    return test_regression_metrics
