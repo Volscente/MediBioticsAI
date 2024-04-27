@@ -44,7 +44,7 @@ def compute_regression_metrics(y_predicted: np.ndarray,
     computed_metrics = pd.DataFrame(columns=['Value'])
 
     # Set round precision
-    round_precision = 4
+    round_precision = 2
 
     # Fetch the metrics to evaluate
     if 'RMSE' in metrics:
