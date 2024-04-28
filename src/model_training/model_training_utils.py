@@ -10,7 +10,12 @@ from sklearn.metrics import (
     mean_squared_error,
     mean_absolute_error,
     mean_absolute_percentage_error,
-    r2_score
+    r2_score,
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    roc_auc_score
 )
 
 # Import Package Modules
@@ -25,7 +30,8 @@ logger = get_logger(os.path.basename(__file__).split('.')[0],
 
 def compute_regression_metrics(y_predicted: np.ndarray,
                                y_true: pd.DataFrame,
-                               metrics: list) -> pd.DataFrame:
+                               metrics: list,
+                               round_precision: int = 2) -> pd.DataFrame:
     """
     Compute regression given metrics
 
@@ -33,6 +39,7 @@ def compute_regression_metrics(y_predicted: np.ndarray,
         y_predicted: Numpy array containing the predicted values
         y_true: Pandas dataframe containing the true values
         metrics: List of metrics to use to compute the regression metrics
+        round_precision: integer used to round precision (Default value = 2)
 
     Returns:
         computed_metrics: Pandas dataframe containing the computed metrics
@@ -42,9 +49,6 @@ def compute_regression_metrics(y_predicted: np.ndarray,
 
     # Initialise return DataFrame
     computed_metrics = pd.DataFrame(columns=['Value'])
-
-    # Set round precision
-    round_precision = 2
 
     # Fetch the metrics to evaluate
     if 'RMSE' in metrics:
@@ -75,5 +79,60 @@ def compute_regression_metrics(y_predicted: np.ndarray,
     logger.info('compute_regression_metrics - Compute metrics %s', computed_metrics)
 
     logger.info('compute_regression_metrics - End')
+
+    return computed_metrics
+
+
+def compute_multi_classification_metrics(y_predicted: np.ndarray,
+                                         y_true: pd.DataFrame,
+                                         metrics: list,
+                                         round_precision: int = 2) -> pd.DataFrame:
+    """
+    Compute multi classification metrics
+
+    Args:
+        y_predicted: Numpy array containing the predicted values
+        y_true: Pandas dataframe containing the true values
+        metrics: List of metrics to use to compute the multi classification metrics
+        round_precision: integer used to round precision (Default value = 2)
+
+    Returns:
+        computed_metrics: Pandas dataframe containing the computed metrics
+    """
+
+    logger.info('compute_multi_classification_metrics - Start')
+
+    # Initialise return DataFrame
+    computed_metrics = pd.DataFrame(columns=['Value'])
+
+    # Fetch the metrics to evaluate
+    if 'Accuracy' in metrics:
+        # Compute Accuracy
+        accuracy = round(accuracy_score(y_true, y_predicted), round_precision)
+        computed_metrics.loc['Accuracy'] = accuracy
+
+    if 'Precision' in metrics:
+        # Compute Precision
+        precision = round(precision_score(y_true, y_predicted, average='micro'), round_precision)
+        computed_metrics.loc['Precision'] = precision
+
+    if 'Recall' in metrics:
+        # Compute Recall
+        recall = round(recall_score(y_true, y_predicted, average='micro'), round_precision)
+        computed_metrics.loc['Recall'] = recall
+
+    if 'F1 Score' in metrics:
+        # Compute F1 Score
+        f1_score_value = round(f1_score(y_true, y_predicted, average='micro'), round_precision)
+        computed_metrics.loc['F1 Score'] = f1_score_value
+
+    if 'ROC AUC' in metrics:
+        # Compute ROC AUC
+        roc_auc_value = round(roc_auc_score(y_true, y_predicted, average='micro'), round_precision)
+        computed_metrics.loc['ROC AUC'] = roc_auc_value
+
+    logger.info('compute_multi_classification_metrics - Compute metrics %s', computed_metrics)
+
+    logger.info('compute_multi_classification_metrics - End')
 
     return computed_metrics
