@@ -128,7 +128,7 @@ def compute_multi_classification_metrics(y_predicted: np.ndarray,
 
     if 'ROC AUC' in metrics:
         # Compute ROC AUC
-        roc_auc_value = round(roc_auc_score(y_true, y_predicted, average='micro'), round_precision)
+        roc_auc_value = round(roc_auc_score(y_true, y_predicted, average='micro', multi_class='ovr'), round_precision)
         computed_metrics.loc['ROC AUC'] = roc_auc_value
 
     logger.info('compute_multi_classification_metrics - Compute metrics %s', computed_metrics)
