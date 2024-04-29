@@ -70,3 +70,20 @@ def fixture_regression_metrics(
     """
 
     return test_regression_metrics
+
+
+@pytest.fixture
+def fixture_multi_classification_metrics(
+        test_multi_classification_metrics: list = configuration['test_multi_classification_metrics']
+) -> list:
+    """
+    Fixture for multi-classification metrics list
+
+    Args:
+        test_multi_classification_metrics: list of multi-classification metrics
+
+    Returns:
+        test_multi_classification_metrics: list of multi-classification metrics
+    """
+
+    return test_multi_classification_metrics
