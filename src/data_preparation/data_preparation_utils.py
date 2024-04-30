@@ -152,3 +152,25 @@ def build_categorical_data_pipeline_steps(categorical_data_transformations: dict
     logger.info('build_categorical_data_pipeline_steps - End')
 
     return categorical_data_pipeline_steps
+
+
+def build_label_data_pipeline_steps(label_data_transformations: dict) -> list:
+    """
+    Build label data transformations steps based
+    on the configuration in 'label_data_transformations'
+
+    Args:
+        label_data_transformations: Dictionary of label data transformations configuration
+
+    Returns:
+        label_data_pipeline_steps: List of label data transformation steps
+    """
+
+    logger.info('build_label_data_pipeline_steps - Start')
+
+    # Initialise label data pipeline steps list
+    label_data_pipeline_steps = []
+
+    logger.info('build_label_data_pipeline_steps - Building steps')
+
+    logger.info('build_label_data_pipeline_steps - End')
