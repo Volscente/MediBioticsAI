@@ -9,7 +9,7 @@ help:
 
 # PyLint
 lint:
-  # PyLint lint from ./src
+  # PyLint lint from ./src and ./tests
   ./scripts/pylint_lint.sh
 
 # SQLFluff

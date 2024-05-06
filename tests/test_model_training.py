@@ -4,7 +4,6 @@ module src.model_training
 """
 # Import Standard Modules
 import numpy as np
-import pandas as pd
 import pytest
 
 # Import Package Modules
