@@ -173,4 +173,25 @@ def build_label_data_pipeline_steps(label_data_transformations: dict) -> list:
 
     logger.info('build_label_data_pipeline_steps - Building steps')
 
+    # 1. Check one hot encoding step
+    if label_data_transformations['one_hot_encoding']['include']:
+
+        # Retrieve one hot encoding module to use
+        one_hot_encoding_module = label_data_transformations['one_hot_encoding']['module']
+
+        logger.info('build_label_data_pipeline_steps - Adding %s One-hot Encoding step',
+                    one_hot_encoding_module)
+
+        # Switch the one hot encoding technique to apply
+        match one_hot_encoding_module:
+            case 'OneHotEncoder':
+                label_data_pipeline_steps.append(
+                    ('one_hot_encoding',
+                     OneHotEncoder())
+                )
+    else:
+        logger.info('build_label_data_pipeline_steps - Skipping One-hot Encoding step')
+
     logger.info('build_label_data_pipeline_steps - End')
+
+    return label_data_pipeline_steps

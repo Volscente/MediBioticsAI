@@ -40,3 +40,9 @@ test_multi_classification_metrics:
   - 'Recall'
   - 'F1 Score'
   - 'ROC AUC'
+
+# Test label data transformations
+test_label_data_transformations:
+  one_hot_encoding:
+    include: True
+    module: 'OneHotEncoder'
