@@ -87,3 +87,23 @@ def fixture_multi_classification_metrics(
     """
 
     return test_multi_classification_metrics
+
+
+@pytest.fixture
+def fixture_label_data_transformations(
+        test_label_data_transformations: dict = configuration['test_label_data_transformations']
+) -> dict:
+    """
+    Fixture for a Dictionary Label Data Transformations with structure:
+        <transformation_name>:
+            include: <bool>
+            module: <string module name>
+
+    Args:
+        test_label_data_transformations: dict of label data transformations
+
+    Returns:
+        test_label_data_transformations: dict of label data transformations
+    """
+
+    return test_label_data_transformations
