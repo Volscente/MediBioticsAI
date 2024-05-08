@@ -34,7 +34,8 @@ class HealthcareDataPreparation:
 
     def __init__(self,
                  data_transformations: dict,
-                 features: dict):
+                 features: dict,
+                 labels: list):
         """
         The constructor of the TrainingDataPreparation object
         initialise the data preparation transformation
@@ -42,7 +43,8 @@ class HealthcareDataPreparation:
 
         Args:
             data_transformations: Dictionary of data preparation transformations to apply
-            features: Dictionary of features list 'numerical', 'categorical' and 'label'
+            features: Dictionary of features list 'numerical' and 'categorical'
+            labels: List of label names
         """
         # Setup logger
         self.logger = get_logger(__class__.__name__,
@@ -62,7 +64,7 @@ class HealthcareDataPreparation:
             self.categorical_features = features['categorical']
 
         # Initialise the labels
-        self.labels = features['label']
+        self.labels = labels
 
         # Initialise data preparation pipeline steps
         self.numerical_data_pipeline_steps = None
