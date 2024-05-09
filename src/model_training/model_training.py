@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 
 # Import Package Modules
 from src.logging_module.logging_module import get_logger
-from src.model_training.model_training_utils import compute_regression_metrics
+from src.model_training.model_training_utils import compute_multi_classification_metrics
 
 
 class ModelTrainer:
@@ -115,7 +115,7 @@ class ModelTrainer:
         self.logger.info('evaluate_pipeline - Evaluate pipeline')
 
         # Compute evaluation metrics
-        evaluation = compute_regression_metrics(predictions, y, metrics)
+        evaluation = compute_multi_classification_metrics(predictions, y, metrics)
 
         self.logger.info('evaluate_pipeline - End')
 
