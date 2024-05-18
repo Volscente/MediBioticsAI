@@ -65,3 +65,12 @@ healthcare_data_pipeline_config:
 model_training_config:
   mlflow:
     experiment_name: 'Version 1.0.x'
+  metrics:
+    - 'Accuracy'
+    - 'Precision'
+    - 'Recall'
+    - 'F1 Score'
+    - 'ROC AUC'
+  linear_regression:
+    model_name: 'linear_regression'
+    mlflow_run_name: 'Linear Regression'

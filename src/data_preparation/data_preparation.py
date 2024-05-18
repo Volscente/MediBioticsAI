@@ -109,7 +109,8 @@ class HealthcareDataPreparation:
             transformers=[
                 ('numerical', Pipeline(self.numerical_data_pipeline_steps), self.numerical_features),
                 ('categorical', Pipeline(self.categorical_data_pipeline_steps), self.categorical_features),
-                ('label', Pipeline(self.label_data_pipeline_steps), self.labels),
+                # TODO: Fix one-hot encoding for the label
+                #('label', Pipeline(self.label_data_pipeline_steps), self.labels),
             ]
         )
 
