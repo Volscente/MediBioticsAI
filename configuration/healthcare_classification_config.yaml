@@ -39,10 +39,6 @@ healthcare_data_pipeline_config:
       one_hot_encoding:
         include: True
         module: 'OneHotEncoder'
-    label:
-      one_hot_encoding:
-        include: True
-        module: 'OneHotEncoder'
   features:
     numerical:
       - 'Age'

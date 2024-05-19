@@ -69,7 +69,6 @@ class HealthcareDataPreparation:
         # Initialise data preparation pipeline steps
         self.numerical_data_pipeline_steps = None
         self.categorical_data_pipeline_steps = None
-        self.label_data_pipeline_steps = None
 
     def build_training_data_preparation_pipeline(self) -> ColumnTransformer:
         """
@@ -95,13 +94,6 @@ class HealthcareDataPreparation:
             self.data_transformations['categorical']
         )
 
-        self.logger.info('build_training_data_preparation_pipeline - Build the Label Data Pipeline')
-
-        # Define the label data pipeline steps
-        self.label_data_pipeline_steps = build_label_data_pipeline_steps(
-            self.data_transformations['label']
-        )
-
         self.logger.info('build_training_data_preparation_pipeline - Bundle the data pipeline')
 
         # Bundle the data pipeline
@@ -109,8 +101,6 @@ class HealthcareDataPreparation:
             transformers=[
                 ('numerical', Pipeline(self.numerical_data_pipeline_steps), self.numerical_features),
                 ('categorical', Pipeline(self.categorical_data_pipeline_steps), self.categorical_features),
-                # TODO: Fix one-hot encoding for the label
-                #('label', Pipeline(self.label_data_pipeline_steps), self.labels),
             ]
         )
 
