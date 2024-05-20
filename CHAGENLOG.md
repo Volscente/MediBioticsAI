@@ -1,3 +1,7 @@
+v1.0.3
+------
+- [x] Add encode label into `notebooks/healthcare_classification/model_training.ipynb`
+
 v1.0.2
 ------
 - [x] Add `HealthcareDataPreparation` class in `src/data_preparation/data_preparation.py` module
