@@ -10,8 +10,7 @@ from sklearn.pipeline import Pipeline
 from src.logging_module.logging_module import get_logger
 from src.data_preparation.data_preparation_utils import (
     build_numerical_data_pipeline_steps,
-    build_categorical_data_pipeline_steps,
-    build_label_data_pipeline_steps
+    build_categorical_data_pipeline_steps
 )
 
 
@@ -26,25 +25,21 @@ class HealthcareDataPreparation:
         data_transformations: Dictionary of data preparation transformations to apply
         numerical_features: List of numerical feature names
         categorical_features: List of categorical feature names
-        labels: List of label names
         numerical_data_pipeline_steps: List of numerical data pipeline steps
         categorical_data_pipeline_steps: List of categorical data pipeline steps
-        label_data_pipeline_steps: List of labels data pipeline steps
     """
 
     def __init__(self,
                  data_transformations: dict,
-                 features: dict,
-                 labels: list):
+                 features: dict):
         """
         The constructor of the TrainingDataPreparation object
         initialise the data preparation transformation
-        dictionary, numerical/categorical features list and labels list.
+        dictionary and numerical/categorical lists.
 
         Args:
             data_transformations: Dictionary of data preparation transformations to apply
             features: Dictionary of features list 'numerical' and 'categorical'
-            labels: List of label names
         """
         # Setup logger
         self.logger = get_logger(__class__.__name__,
@@ -62,9 +57,6 @@ class HealthcareDataPreparation:
             self.numerical_features = features['numerical']
         if 'categorical' in features:
             self.categorical_features = features['categorical']
-
-        # Initialise the labels
-        self.labels = labels
 
         # Initialise data preparation pipeline steps
         self.numerical_data_pipeline_steps = None
