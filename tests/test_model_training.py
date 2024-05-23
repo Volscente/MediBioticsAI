@@ -47,6 +47,7 @@ def test_compute_regression_metrics(y_predicted: np.ndarray,
      [[0, 1, 0], [0, 0, 1], [0, 0, 1], [1, 0, 0], [1, 0, 0]],
      [0.2, 0.2, 0.2, 0.2, 0.4])
 ])
+# TODO: Refactor with the probabilities
 def test_compute_multi_classification_metrics(y_predicted: np.ndarray,
                                               y_true: np.ndarray,
                                               expected_metrics: np.ndarray,

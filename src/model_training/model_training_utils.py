@@ -84,6 +84,7 @@ def compute_regression_metrics(y_predicted: np.ndarray,
 
 
 def compute_multi_classification_metrics(y_predicted: np.ndarray,
+                                         probabilities: np.ndarray,
                                          y_true: pd.DataFrame,
                                          metrics: list,
                                          round_precision: int = 2) -> pd.DataFrame:
@@ -92,6 +93,7 @@ def compute_multi_classification_metrics(y_predicted: np.ndarray,
 
     Args:
         y_predicted: Numpy array containing the predicted values
+        probabilities: Numpy array containing the predicted probabilities
         y_true: Pandas dataframe containing the true values
         metrics: List of metrics to use to compute the multi classification metrics
         round_precision: integer used to round precision (Default value = 2)
@@ -128,7 +130,7 @@ def compute_multi_classification_metrics(y_predicted: np.ndarray,
 
     if 'ROC AUC' in metrics:
         # Compute ROC AUC
-        roc_auc_value = round(roc_auc_score(y_true, y_predicted, average='micro', multi_class='ovr'), round_precision)
+        roc_auc_value = round(roc_auc_score(y_true, probabilities, average='micro', multi_class='ovr'), round_precision)
         computed_metrics.loc['ROC AUC'] = roc_auc_value
 
     logger.info('compute_multi_classification_metrics - Compute metrics %s', computed_metrics)
