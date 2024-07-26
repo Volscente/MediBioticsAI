@@ -3,6 +3,7 @@ This test module includes all the tests for the
 module src.data_preparation
 """
 # Import Standard Modules
+from typing import Union
 import pytest
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder
@@ -51,7 +52,7 @@ def test_build_numerical_data_pipeline_steps(fixture_numerical_data_transformati
 def test_build_categorical_data_pipeline_steps(fixture_categorical_data_transformations: dict,
                                                step: int,
                                                expected_step: str,
-                                               expected_module: SimpleImputer) -> bool:
+                                               expected_module: Union[SimpleImputer, OneHotEncoder]) -> bool:
     """
     Test src.data_preparation.data_preparation_utils.build_categorical_data_pipeline_steps
     by checking the correct instance of data pipelines step objects
@@ -60,7 +61,7 @@ def test_build_categorical_data_pipeline_steps(fixture_categorical_data_transfor
         fixture_categorical_data_transformations: Dictionary of categorical data transformations configuration
         step: Integer step number
         expected_step: String expected step name
-        expected_module: SimpleImputer expected module type
+        expected_module: SimpleImputer|OneHotEncoder expected module type
 
     Returns:
     """

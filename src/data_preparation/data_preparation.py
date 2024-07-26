@@ -35,7 +35,7 @@ class HealthcareDataPreparation:
         """
         The constructor of the TrainingDataPreparation object
         initialise the data preparation transformation
-        dictionary and numerical and categorical features list.
+        dictionary and numerical/categorical lists.
 
         Args:
             data_transformations: Dictionary of data preparation transformations to apply
@@ -92,7 +92,7 @@ class HealthcareDataPreparation:
         training_data_preparation_pipeline = ColumnTransformer(
             transformers=[
                 ('numerical', Pipeline(self.numerical_data_pipeline_steps), self.numerical_features),
-                ('categorical', Pipeline(self.categorical_data_pipeline_steps), self.categorical_features)
+                ('categorical', Pipeline(self.categorical_data_pipeline_steps), self.categorical_features),
             ]
         )
 
