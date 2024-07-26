@@ -11,8 +11,7 @@ from sklearn.preprocessing import OneHotEncoder
 # Import Package Modules
 from src.data_preparation.data_preparation_utils import (
     build_numerical_data_pipeline_steps,
-    build_categorical_data_pipeline_steps,
-    build_label_data_pipeline_steps
+    build_categorical_data_pipeline_steps
 )
 
 
