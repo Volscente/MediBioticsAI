@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/s.porreca/Projects/MediBioticsAI/notebooks/healthcare_classification/mlruns/388746619317475161/43e5dd4e7b2a4c3c82a222c867df7f6d/artifacts
+end_time: 1722284239210
+entry_point_name: ''
+experiment_id: '388746619317475161'
+lifecycle_stage: active
+run_id: 43e5dd4e7b2a4c3c82a222c867df7f6d
+run_name: Logistic Regression
+run_uuid: 43e5dd4e7b2a4c3c82a222c867df7f6d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1722284235203
+status: 3
+tags: []
+user_id: s.porreca

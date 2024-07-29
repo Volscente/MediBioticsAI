@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1722284239204
+current_stage: None
+description: null
+last_updated_timestamp: 1722284239204
+name: Logistic Regression
+run_id: 43e5dd4e7b2a4c3c82a222c867df7f6d
+run_link: null
+source: file:///Users/s.porreca/Projects/MediBioticsAI/notebooks/healthcare_classification/mlruns/388746619317475161/43e5dd4e7b2a4c3c82a222c867df7f6d/artifacts/logistic_regression
+status: READY
+status_message: null
+storage_location: file:///Users/s.porreca/Projects/MediBioticsAI/notebooks/healthcare_classification/mlruns/388746619317475161/43e5dd4e7b2a4c3c82a222c867df7f6d/artifacts/logistic_regression
+user_id: null
+version: 1
