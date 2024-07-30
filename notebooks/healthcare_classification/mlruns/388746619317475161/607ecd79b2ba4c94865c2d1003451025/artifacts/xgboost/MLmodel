@@ -1,4 +1,4 @@
-artifact_path: logistic_regression
+artifact_path: xgboost
 flavors:
   python_function:
     env:
@@ -14,9 +14,9 @@ flavors:
     serialization_format: cloudpickle
     sklearn_version: 1.5.1
 mlflow_version: 2.14.3
-model_size_bytes: 4930
-model_uuid: 9fdaceda426e46919f0ece536ce8eb81
-run_id: 43e5dd4e7b2a4c3c82a222c867df7f6d
+model_size_bytes: 1115176
+model_uuid: 51576eb5151c4e959767663cd7554ae1
+run_id: 607ecd79b2ba4c94865c2d1003451025
 saved_input_example_info:
   artifact_path: input_example.json
   pandas_orient: split
@@ -29,6 +29,6 @@ signature:
     "Medical Condition", "required": true}, {"type": "string", "name": "Insurance
     Provider", "required": true}, {"type": "string", "name": "Admission Type", "required":
     true}, {"type": "string", "name": "Medication", "required": true}]'
-  outputs: '[{"type": "long", "required": true}]'
+  outputs: '[{"type": "integer", "required": true}]'
   params: null
-utc_time_created: '2024-07-29 20:17:15.400003'
+utc_time_created: '2024-07-30 12:13:00.552050'

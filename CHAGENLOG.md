@@ -16,7 +16,7 @@ v1.0.2
 - [x] Add script `pylint_lint.sh` in `scripts`
 - [x] Add script `pylint_lint.sh` in `scripts`
 - [x] Add function `build_training_data_preparation_pipeline` in class `HealthcareDataPreparation`
-- [x] Add `model_training.ipynb` in `notebooks/healthcare_classification`
+- [x] Add Notebook `model_training.ipynb` in `notebooks/healthcare_classification`
 
 v1.0.1
 ------

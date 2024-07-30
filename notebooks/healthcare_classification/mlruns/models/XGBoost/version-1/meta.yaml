@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1722341583442
+current_stage: None
+description: null
+last_updated_timestamp: 1722341583442
+name: XGBoost
+run_id: 607ecd79b2ba4c94865c2d1003451025
+run_link: null
+source: file:///Users/s.porreca/Projects/MediBioticsAI/notebooks/healthcare_classification/mlruns/388746619317475161/607ecd79b2ba4c94865c2d1003451025/artifacts/xgboost
+status: READY
+status_message: null
+storage_location: file:///Users/s.porreca/Projects/MediBioticsAI/notebooks/healthcare_classification/mlruns/388746619317475161/607ecd79b2ba4c94865c2d1003451025/artifacts/xgboost
+user_id: null
+version: 1
