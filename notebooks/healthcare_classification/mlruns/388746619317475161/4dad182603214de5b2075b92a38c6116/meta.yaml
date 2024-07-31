@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/s.porreca/Projects/MediBioticsAI/notebooks/healthcare_classification/mlruns/388746619317475161/4dad182603214de5b2075b92a38c6116/artifacts
+end_time: 1722418572601
+entry_point_name: ''
+experiment_id: '388746619317475161'
+lifecycle_stage: active
+run_id: 4dad182603214de5b2075b92a38c6116
+run_name: XGBoost
+run_uuid: 4dad182603214de5b2075b92a38c6116
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1722418569828
+status: 3
+tags: []
+user_id: s.porreca
