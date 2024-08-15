@@ -15,8 +15,8 @@ flavors:
     sklearn_version: 1.5.1
 mlflow_version: 2.14.3
 model_size_bytes: 4930
-model_uuid: 87eb49dc4436461e937f8992474378b8
-run_id: 69ce35208edf4ffebfc103a58ffad652
+model_uuid: eb580f68b99d422caca46504ab54a845
+run_id: 95c72fe673e44752a16a4e4db22327ef
 saved_input_example_info:
   artifact_path: input_example.json
   pandas_orient: split
@@ -31,4 +31,4 @@ signature:
     true}, {"type": "string", "name": "Medication", "required": true}]'
   outputs: '[{"type": "long", "required": true}]'
   params: null
-utc_time_created: '2024-07-31 09:36:06.441677'
+utc_time_created: '2024-08-15 19:00:02.637742'
