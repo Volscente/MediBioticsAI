@@ -1,0 +1,34 @@
+artifact_path: xgboost
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.2
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.1
+mlflow_version: 2.14.3
+model_size_bytes: 1115176
+model_uuid: 87799b09cbbd48f2b8be3b42c6b7f52e
+run_id: 121f357fe04b4b9f80394dc0f2c3d448
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  type: dataframe
+signature:
+  inputs: '[{"type": "long", "name": "Age", "required": true}, {"type": "double",
+    "name": "Billing Amount", "required": true}, {"type": "long", "name": "Room Number",
+    "required": true}, {"type": "string", "name": "Gender", "required": true}, {"type":
+    "string", "name": "Blood Type", "required": true}, {"type": "string", "name":
+    "Medical Condition", "required": true}, {"type": "string", "name": "Insurance
+    Provider", "required": true}, {"type": "string", "name": "Admission Type", "required":
+    true}, {"type": "string", "name": "Medication", "required": true}]'
+  outputs: '[{"type": "integer", "required": true}]'
+  params: null
+utc_time_created: '2024-08-22 11:25:02.527159'
