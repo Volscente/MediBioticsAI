@@ -1,3 +1,17 @@
+v1.0.4
+------
+- [x] Add module `src/model_training`
+- [x] Add class `ModelTrainer` in `src/model_training/model_training.py`
+- [x] Add function `compute_regression_metrics` in `src/model_training/model_training_utils.py`
+- [x] Add Fixture `fixture_regression_metrics`
+- [x] Add PyTest `test_compute_regression_metrics` in `tests/test_model_training.py`
+- [x] Add function `bundle_and_fit_pipeline` in `src/model_training/model_training.ModelTrainer`
+- [x] Add function `compute_multi_classification_metrics` in `src/model_training/model_training_utils.py`
+- [x] Add Fixture `fixture_multi_classification_metrics`
+- [x] Add PyTest `test_compute_multi_classification_metrics` in `tests/test_model_training.py`
+- [x] Add function `evaluate_pipeline ` in `src/model_training/model_training.ModelTrainer`
+- [x] Update Notebook `model_training.ipynb` in `notebooks/healthcare_classification`
+
 v1.0.3
 ------
 - [x] Add encode label into `notebooks/healthcare_classification/model_training.ipynb`
