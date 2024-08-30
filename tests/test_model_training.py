@@ -42,12 +42,14 @@ def test_compute_regression_metrics(y_predicted: np.ndarray,
     assert np.array_equal(metrics, expected_metrics)
 
 
-@pytest.mark.parametrize('y_predicted, y_true, expected_metrics', [
+@pytest.mark.parametrize('y_predicted, probabilities, y_true, expected_metrics', [
     ([[1, 0, 0], [0, 1, 0], [0, 0, 1], [0, 0, 1], [0, 0, 1]],
+     [[0.8, 0.1, 0.1], [0.1, 0.8, 0.1], [0.1, 0.1, 0.8], [0.1, 0.1, 0.8], [0.1, 0.1, 0.8]],
      [[0, 1, 0], [0, 0, 1], [0, 0, 1], [1, 0, 0], [1, 0, 0]],
      [0.2, 0.2, 0.2, 0.2, 0.4])
 ])
 def test_compute_multi_classification_metrics(y_predicted: np.ndarray,
+                                              probabilities: np.ndarray,
                                               y_true: np.ndarray,
                                               expected_metrics: np.ndarray,
                                               fixture_multi_classification_metrics: list) -> bool:
@@ -57,6 +59,7 @@ def test_compute_multi_classification_metrics(y_predicted: np.ndarray,
 
     Args:
         y_predicted: np.ndarray of predicted values
+        probabilities: np.ndarray of probabilities
         y_true: np.ndarray of true values
         expected_metrics: np.ndarray of expected multi-classification metrics values
         fixture_multi_classification_metrics: list of metrics
@@ -65,7 +68,10 @@ def test_compute_multi_classification_metrics(y_predicted: np.ndarray,
     """
 
     # Apply the function to test and compute the metrics
-    metrics = compute_multi_classification_metrics(y_predicted, y_true, fixture_multi_classification_metrics)
+    metrics = compute_multi_classification_metrics(y_predicted,
+                                                   probabilities,
+                                                   y_true,
+                                                   fixture_multi_classification_metrics)
 
     # Reshaping metrics for comparison
     metrics = metrics.values.reshape(1, -1)[0]

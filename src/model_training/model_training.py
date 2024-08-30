@@ -106,6 +106,9 @@ class ModelTrainer:
             # Compute predictions
             predictions = self.pipeline.predict(x)
 
+            # Compute prediction probabilities
+            prediction_probabilities = self.pipeline.predict_proba(x)
+
         except AttributeError as exc:
 
             self.logger.error('evaluate_pipeline - Impossible to compute predictions')
@@ -115,7 +118,10 @@ class ModelTrainer:
         self.logger.info('evaluate_pipeline - Evaluate pipeline')
 
         # Compute evaluation metrics
-        evaluation = compute_multi_classification_metrics(predictions, y, metrics)
+        evaluation = compute_multi_classification_metrics(y_predicted=predictions,
+                                                          probabilities=prediction_probabilities,
+                                                          y_true=y,
+                                                          metrics=metrics)
 
         self.logger.info('evaluate_pipeline - End')
 
