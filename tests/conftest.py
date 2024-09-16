@@ -11,10 +11,6 @@ from dynaconf import Dynaconf
 from src.general_utils.general_utils import read_configuration
 
 # Read configuration file
-# TODO: Remove
-configuration = read_configuration(pathlib.Path(__file__).parents[1]
-                                   / 'configuration'
-                                   / 'test_config.yaml')
 config = Dynaconf(settings_files=[pathlib.Path(__file__).parents[1]
                   / 'configuration'
                   / 'test_config.toml'])
@@ -34,7 +30,7 @@ def fixture_numerical_data_transformations(
         data_transformations_config: Dynaconf object with numerical data transformations as a dictionary
 
     Returns:
-        test_numerical_data_transformations: dict of numerical data transformations
+        data_transformations: dict of numerical data transformations
     """
 
     # Retrieve data transformations
@@ -57,7 +53,7 @@ def fixture_categorical_data_transformations(
         data_transformations_config: Dynaconf object with numerical data transformations as a dictionary
 
     Returns:
-        test_categorical_data_transformations: dict of categorical data transformations
+        data_transformations: dict of categorical data transformations
     """
 
     # Retrieve data transformations
@@ -68,33 +64,39 @@ def fixture_categorical_data_transformations(
 
 @pytest.fixture
 def fixture_regression_metrics(
-        test_regression_metrics: list = configuration['test_regression_metrics']
+        metrics_config: Dynaconf = config
 ) -> list:
     """
     Fixture for regression metrics list
 
     Args:
-        test_regression_metrics: list of regression metrics
+        metrics_config: Dynaconf object with list of metrics
 
     Returns:
-        test_regression_metrics: list of regression metrics
+        metrics: list of regression metrics
     """
 
-    return test_regression_metrics
+    # Retrieve data transformations
+    metrics = metrics_config['default']['regression_metrics'].to_list()
+
+    return metrics
 
 
 @pytest.fixture
 def fixture_multi_classification_metrics(
-        test_multi_classification_metrics: list = configuration['test_multi_classification_metrics']
+        metrics_config: Dynaconf = config
 ) -> list:
     """
     Fixture for multi-classification metrics list
 
     Args:
-        test_multi_classification_metrics: list of multi-classification metrics
+        metrics_config: Dynaconf object with list of metrics
 
     Returns:
-        test_multi_classification_metrics: list of multi-classification metrics
+        metrics: list of multi-classification metrics
     """
 
-    return test_multi_classification_metrics
+    # Retrieve data transformations
+    metrics = metrics_config['default']['multi_classification_metrics'].to_list()
+
+    return metrics

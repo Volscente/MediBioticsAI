@@ -1,5 +1,20 @@
 [default]
 value = 1
+regression_metrics = [
+    'RMSE',
+    'MSE',
+    'MAE',
+    'MAPE',
+    'R2 Score'
+]
+multi_classification_metrics = [
+    'Accuracy',
+    'Precision',
+    'Recall',
+    'F1 Score',
+    'ROC AUC'
+]
+
 
 [numerical_data_transformations]
 feature_engineering.include = false
@@ -10,6 +25,7 @@ imputation.module = 'SimpleImputer'
 standardisation.include = false
 
 normalization.include = false
+
 
 [categorical_data_transformations]
 imputation.include = true
