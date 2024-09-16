@@ -11,3 +11,10 @@ standardisation.include = false
 
 normalization.include = false
 
+[categorical_data_transformations]
+imputation.include = true
+imputation.module = 'SimpleImputer'
+
+one_hot_encoding.include = true
+one_hot_encoding.module = 'OneHotEncoder'
+

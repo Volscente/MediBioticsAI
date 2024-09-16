@@ -45,7 +45,7 @@ def fixture_numerical_data_transformations(
 
 @pytest.fixture
 def fixture_categorical_data_transformations(
-        test_categorical_data_transformations: dict = configuration['test_categorical_data_transformations']
+        data_transformations_config: Dynaconf = config
 ) -> dict:
     """
     Fixture for a Dictionary Categorical Data Transformations with structure:
@@ -54,13 +54,16 @@ def fixture_categorical_data_transformations(
             module: <string module name>
 
     Args:
-        test_categorical_data_transformations: dict of categorical data transformations
+        data_transformations_config: Dynaconf object with numerical data transformations as a dictionary
 
     Returns:
         test_categorical_data_transformations: dict of categorical data transformations
     """
 
-    return test_categorical_data_transformations
+    # Retrieve data transformations
+    data_transformations = data_transformations_config['categorical_data_transformations'].to_dict()
+
+    return data_transformations
 
 
 @pytest.fixture
