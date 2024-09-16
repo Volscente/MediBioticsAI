@@ -2,4 +2,12 @@
 value = 1
 
 [numerical_data_transformations]
-feature_engineering = {include = false, module = null}
+feature_engineering.include = false
+
+imputation.include = true
+imputation.module = 'SimpleImputer'
+
+standardisation.include = false
+
+normalization.include = false
+
