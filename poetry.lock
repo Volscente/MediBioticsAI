@@ -687,6 +687,27 @@ ssh = ["paramiko (>=2.4.3)"]
 websockets = ["websocket-client (>=1.3.0)"]
 
 [[package]]
+name = "dynaconf"
+version = "3.2.6"
+description = "The dynamic configurator for your Python Project"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "dynaconf-3.2.6-py2.py3-none-any.whl", hash = "sha256:3911c740d717df4576ed55f616c7cbad6e06bc8ef23ffca444b6e2a12fb1c34c"},
+    {file = "dynaconf-3.2.6.tar.gz", hash = "sha256:74cc1897396380bb957730eb341cc0976ee9c38bbcb53d3307c50caed0aedfb8"},
+]
+
+[package.extras]
+all = ["configobj", "hvac", "redis", "ruamel.yaml"]
+configobj = ["configobj"]
+ini = ["configobj"]
+redis = ["redis"]
+test = ["configobj", "django", "flask (>=0.12)", "hvac (>=1.1.0)", "pytest", "pytest-cov", "pytest-mock", "pytest-xdist", "python-dotenv", "radon", "redis", "toml"]
+toml = ["toml"]
+vault = ["hvac"]
+yaml = ["ruamel.yaml"]
+
+[[package]]
 name = "entrypoints"
 version = "0.4"
 description = "Discover and load entry points from installed packages."
@@ -3685,4 +3706,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "89e3ed9485ce17cee71b9a7e261f6f9f108e0acdf91b71cde37dfd5e577c8c94"
+content-hash = "62799493496811588a0c521ffde56416ec07fad73c8fbbaf0ffb270be824eb1b"

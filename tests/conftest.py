@@ -5,19 +5,24 @@ for running PyTest tests
 # Import Standard Libraries
 import pathlib
 import pytest
+from dynaconf import Dynaconf
 
 # Import Package Modules
 from src.general_utils.general_utils import read_configuration
 
 # Read configuration file
+# TODO: Remove
 configuration = read_configuration(pathlib.Path(__file__).parents[1]
                                    / 'configuration'
                                    / 'test_config.yaml')
+config = Dynaconf(settings_files=[pathlib.Path(__file__).parents[1]
+                  / 'configuration'
+                  / 'test_config.toml'])
 
 
 @pytest.fixture
 def fixture_numerical_data_transformations(
-        test_numerical_data_transformations: dict = configuration['test_numerical_data_transformations']
+        data_transformations_config: Dynaconf = config
 ) -> dict:
     """
     Fixture for a Dictionary Numerical Data Transformations with structure:
@@ -26,13 +31,16 @@ def fixture_numerical_data_transformations(
             module: <string module name>
 
     Args:
-        test_numerical_data_transformations: dict of numerical data transformations
+        data_transformations_config: Dynaconf object with numerical data transformations as a dictionary
 
     Returns:
         test_numerical_data_transformations: dict of numerical data transformations
     """
 
-    return test_numerical_data_transformations
+    # Retrieve data transformations
+    data_transformations = data_transformations_config['numerical_data_transformations'].to_dict()
+
+    return data_transformations
 
 
 @pytest.fixture
